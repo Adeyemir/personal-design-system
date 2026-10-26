@@ -1,5 +1,3 @@
-import React from 'react';
-
 type ButtonProps = {
   label: string;
   variant?: 'primary' | 'secondary' | 'outline';
@@ -7,7 +5,7 @@ type ButtonProps = {
 };
 
 export const Button = ({ label, variant = 'primary', onClick }: ButtonProps) => {
-  let baseStyles = 'px-4 py-2 rounded-md font-medium transition-all duration-200 cursor-pointer';
+  const baseStyles = 'px-4 py-2 rounded-md font-medium transition-all duration-200 cursor-pointer';
   let variantStyles = '';
 
   if (variant === 'primary') {
