@@ -9,7 +9,8 @@ export const Button = ({ label, variant = 'primary', onClick }: ButtonProps) => 
   let variantStyles = '';
 
   if (variant === 'primary') {
-    variantStyles = 'bg-[var(--accent)] text-white hover:opacity-90';
+    variantStyles =
+      'bg-[var(--accent)] text-[#08060d] hover:brightness-110';
   } else if (variant === 'secondary') {
     variantStyles = 'bg-[var(--code-bg)] text-[var(--text-h)] hover:opacity-80';
   } else if (variant === 'outline') {
