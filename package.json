@@ -10,6 +10,7 @@
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build",
+    "preview:storybook": "vite preview --outDir storybook-static --port 6007 --strictPort",
     "test:storybook": "vitest run --project=storybook-light --project=storybook-dark",
     "test:storybook:coverage": "npm run test:storybook -- --coverage",
     "check": "npm run lint && npm run build && npm run test:storybook && npm run build-storybook"

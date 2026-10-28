@@ -1,5 +1,7 @@
 # Personal Design System
 
+[![Component checks](https://github.com/Adeyemir/personal-design-system/actions/workflows/checks.yml/badge.svg)](https://github.com/Adeyemir/personal-design-system/actions/workflows/checks.yml)
+
 A React, TypeScript, Tailwind CSS, and Storybook learning project. The goal is to practise building, documenting, checking, and sharing reusable components before working in an existing frontend team's codebase.
 
 This project's theme is a practice theme. Existing product work should reuse that product's brand assets, design tokens, components, and conventions.
@@ -41,7 +43,7 @@ Each completed stage is committed and pushed separately so the Git history expla
 | 1. Controls | Complete | The dashboard renders its `title` prop, and its story supplies `args.title`. Controls changes those args, which updates the rendered heading. ESLint ignores generated Storybook output. |
 | 2. Reusable data and states | Complete | The dashboard accepts typed project data and a create callback; five stories cover realistic states. Input demonstrates labels, descriptions, errors, disabled state, and filled state. |
 | 3. Documentation and verification | Complete | Autodocs, an MDX guide, interaction tests, light/dark checks, accessibility failures, coverage, and a GitHub Actions workflow |
-| 4. Sharing and recap | Next | A shareable build, a guided review, and the final learning checklist |
+| 4. Sharing and recap | Complete | A static build and preview command, downloadable CI artifacts, and a final hands-on review checklist. Public hosting is optional. |
 
 ### Stage 1 exercise: Controls
 
@@ -75,6 +77,44 @@ Open **Guides → Tutorial** in Storybook for the complete walkthrough. Each com
 - `.github/workflows/checks.yml` runs the same checks for pushes and pull requests. Successful runs provide downloadable `storybook-site` and `component-coverage` artifacts for seven days.
 
 Stage 3 verification: 23 stories pass in each theme, for 46 Chromium tests. This includes automated accessibility checks and eight interaction scenarios per theme. The first coverage run reports 100% line coverage and 97.95% branch coverage for the five components. Coverage is a record of execution, rather than a guarantee that every user scenario is covered.
+
+The [first complete GitHub Actions run](https://github.com/Adeyemir/personal-design-system/actions/runs/40661394338) also passed lint, builds, all themed tests, and both artifact uploads.
+
+### Stage 4 exercise: Share and review
+
+```bash
+npm run build-storybook
+npm run preview:storybook
+```
+
+Open http://localhost:6007 to review the production Storybook build. The development workshop remains on port 6006.
+
+The static site is written to `storybook-static`. Successful [GitHub Actions runs](https://github.com/Adeyemir/personal-design-system/actions/workflows/checks.yml) attach a `storybook-site` artifact containing that build, and a `component-coverage` artifact containing the coverage report. Download a build to review it with a static server. Artifacts expire after seven days; source and build commands remain in Git.
+
+The repository and downloadable build complete the sharing exercise. A public Pages or Chromatic site can be added separately when desired. This tutorial does not require creating a paid account or adding a secret.
+
+### Stage commits
+
+- [Stage 1: Controls and learning log](https://github.com/Adeyemir/personal-design-system/commit/50b83af)
+- [Stage 2: Data-driven states and Input](https://github.com/Adeyemir/personal-design-system/commit/60d8902)
+- [Stage 3: Documentation and automated checks](https://github.com/Adeyemir/personal-design-system/commit/dbef9ca)
+- Stage 4: `docs: wrap up Storybook tutorial and sharing workflow` in the repository history.
+
+## Final hands-on review
+
+The component and verification work is implemented. Use these exercises to confirm you can explain and operate it yourself:
+
+- [ ] Change the dashboard title in Controls and find the matching `args` and prop in code.
+- [ ] Change the project array and explain `.map()`, stable keys, and the empty state.
+- [ ] Click Create project and find its recorded event in Actions.
+- [ ] Click Input's label, type text, inspect an error, and navigate controls with Tab.
+- [ ] Check Mobile and Long Titles in both Light and Dark themes.
+- [ ] Open the component Docs pages and **Guides → Tutorial**.
+- [ ] Run tests from the Storybook sidebar with Accessibility and Coverage enabled.
+- [ ] Review the checks and downloadable build on GitHub.
+- [ ] Review a stage commit and explain why its changes belong together.
+
+You have completed the tutorial workflow when you can build a component, describe its states in stories, inspect its props and events, verify it, document it, and share a reviewable change. The next exercise is to create a small feature branch and repeat that loop independently.
 
 The Storybook sidebar focuses on the workshop components and guide. The original generated examples remain in the repository as source references.
 

@@ -75,3 +75,27 @@ There are five workshop components and more than twenty meaningful stories. Opti
 Each tutorial stage is saved separately. A useful stage explains the behavior that changed, the lesson, and the checks that passed. See the repository README for the learning log and commands.
 
 The practical loop is: change a component, add a story for its state, inspect Controls and Actions, run the checks, review the diff, commit, and push.
+
+## 10. Share the built workshop
+
+```bash
+npm run build-storybook
+npm run preview:storybook
+```
+
+Open http://localhost:6007 to inspect the static build. A successful Component checks run on GitHub provides a downloadable `storybook-site` artifact and a coverage report. A public hosted link can be configured separately.
+
+## Final review
+
+The workshop contains five components and 23 stories. The automated run checks those stories in both themes, for 46 Chromium tests. Try explaining these without reading the answer first:
+
+- How does a story's `args` value become visible text?
+- How do children and footer differ from a title prop?
+- Why does each item rendered with `.map()` need a stable key?
+- How is a callback recorded in Actions different from saving data?
+- How do a label and error message become associated with an input?
+- What does an interaction test check that a screenshot cannot?
+- Why must a theme change its foreground and background together?
+- What is the difference between a local commit and a push?
+
+Review the matching story or source file if any answer is unclear. Your next independent practice task is to make one small component change on a feature branch, add the relevant story, run the checks, and explain the diff.
