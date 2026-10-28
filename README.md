@@ -25,7 +25,7 @@ npm run build-storybook
 
 | Level | Components | Lesson |
 | --- | --- | --- |
-| Atoms | Button, Badge | Props, variants, and shared styling |
+| Atoms | Button, Badge, Input | Props, variants, accessible labels, and shared styling |
 | Molecules | Card | Children, optional slots, and composition |
 | Organisms | DashboardSection | Combining components and responsive grids |
 
@@ -37,8 +37,8 @@ Each completed stage is committed and pushed separately so the Git history expla
 | --- | --- | --- |
 | Foundations | Complete | Button and Badge variants; Card composition; a responsive DashboardSection; checking contrast in Storybook |
 | 1. Controls | Complete | The dashboard renders its `title` prop, and its story supplies `args.title`. Controls changes those args, which updates the rendered heading. ESLint ignores generated Storybook output. |
-| 2. Reusable data and states | Next | Typed data, callbacks, a labelled form input, and stories for realistic edge cases |
-| 3. Documentation and verification | Planned | Autodocs, interaction tests, accessibility checks, and repeatable GitHub checks |
+| 2. Reusable data and states | Complete | The dashboard accepts typed project data and a create callback; five stories cover realistic states. Input demonstrates labels, descriptions, errors, disabled state, and filled state. |
+| 3. Documentation and verification | Next | Autodocs, interaction tests, accessibility checks, and repeatable GitHub checks |
 | 4. Sharing and recap | Planned | A shareable build, a guided review, and the final learning checklist |
 
 ### Stage 1 exercise: Controls
@@ -50,6 +50,20 @@ Open **Organisms → DashboardSection → Default**, select **Controls**, and ch
 3. `<h2>{title}</h2>` displays that input.
 
 The default value `title = 'My projects'` is used when the prop is omitted.
+
+### Stage 2 exercise: Data, states, and Actions
+
+- Change the `projects` array in DashboardSection Controls. `.map()` renders one Card per project, and the stable `id` supplies React's `key`.
+- Open **Empty**, **Many Projects**, and **Long Titles** to review cases beyond the default layout.
+- Open **Mobile** or use the Viewports toolbar. The grid changes from one column to two at the `md` breakpoint.
+- Click **Create project**, then open **Actions**. `fn()` records the callback; the story is a UI demonstration and does not save a project to a server.
+- Inspect Input's stories. The label is linked with `htmlFor`/`id`; helper and error text are linked with `aria-describedby`; errors set `aria-invalid`.
+
+Input is an uncontrolled native input: `defaultValue` provides its initial value. A consumer can instead supply `value` and `onChange` to manage its state.
+
+### Design references
+
+The existing practice theme remains the main target. [shadcn/ui](https://ui.shadcn.com/) informs compact content hierarchy and restrained surfaces; the [imgs.so sign-in reference](https://imgs.so/) contributes only a flat, rounded input treatment. Existing font and color roles remain in place. The form craft reference requires visible labels, native inputs, associated messages, and visible keyboard focus. The danger color is reserved for validation messages and error borders.
 
 ## About Storybook's completion percentage
 
