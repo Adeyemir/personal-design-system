@@ -1,0 +1,77 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Guides/Tutorial" />
+
+# Your Storybook workshop
+
+This is a practice component library for learning a frontend team's workflow. Its colors belong to this exercise. When joining an existing product, use that product's components, brand assets, tokens, and code conventions.
+
+## 1. Understand the building blocks
+
+- **Atoms:** Button, Badge, and Input are small reusable controls or labels.
+- **Molecule:** Card groups related content through its title, description, children, and footer.
+- **Organism:** DashboardSection combines those pieces into a project overview.
+
+## 2. Change props with Controls
+
+Open **Organisms → DashboardSection → Default** and edit `title` in Controls. The value travels from story args to a component prop to the heading.
+
+Edit `projects` to change the data. The component uses `.map()` to render cards, and each project's stable `id` supplies React's `key`.
+
+## 3. Review useful states
+
+Inspect DashboardSection's **Empty**, **Many Projects**, **Long Titles**, and **Mobile** stories. These show cases that a default screenshot can miss.
+
+Use the Viewports toolbar on Default to try small and large screens. Mobile has a fixed small viewport so its layout is reproducible.
+
+Use the **Light / Dark** theme toolbar to change the actual component tokens and canvas together. Changing a canvas color alone does not change a component's theme.
+
+## 4. Observe events and interactions
+
+Click **Create project** and open Actions. The callback is recorded by `fn()`. The consumer owns what happens after that event; this workshop does not persist projects.
+
+The Button, Input, and DashboardSection stories also contain `play` functions. Open Interactions to replay clicks, text entry, error-description checks, and the mobile layout check.
+
+## 5. Learn accessible form behavior
+
+Input's visible label is connected to the input. Clicking the label focuses the field. Helper and error messages are linked through `aria-describedby`, and an error sets `aria-invalid`.
+
+Button uses native disabled behavior and a visible keyboard focus outline. Badge communicates status through words as well as color.
+
+## 6. Read component documentation
+
+Each component has an automatically generated **Docs** page with its props, examples, and source snippets. This guide is a separate MDX documentation page that explains how the pieces fit together.
+
+## 7. Run the checks
+
+```bash
+npm run lint
+npm run build
+npm run test:storybook
+npm run test:storybook:coverage
+npm run build-storybook
+```
+
+The test command renders every workshop story in Chromium in both light and dark themes. Accessibility violations fail the run. Interaction tests check observable behavior, and the mobile story checks stacking and horizontal overflow at its actual viewport width.
+
+Coverage shows which component code executed; passing automated checks complements keyboard and visual review.
+
+## 8. Finish the local onboarding checklist
+
+Storybook's percentage tracks its own setup guide. To update the UI-based steps, perform these actions in your running Storybook:
+
+1. Change a value in Controls.
+2. Change a viewport using the toolbar.
+3. Open the component Docs pages and this MDX guide.
+4. Expand **Run tests** in the sidebar, enable Accessibility and Coverage, then run the component tests.
+5. Review the passing interactions and the generated coverage report.
+6. Open **See what's new** if that item appears in the guide.
+7. Review the sharing and CI steps after using those workflows.
+
+There are five workshop components and more than twenty meaningful stories. Optional AI setup and hosted visual tests involve separate integrations. Use Storybook's own skip controls for optional steps you choose to omit. The repository does not modify onboarding counters or mark unperformed actions complete.
+
+## 9. Keep the Git history useful
+
+Each tutorial stage is saved separately. A useful stage explains the behavior that changed, the lesson, and the checks that passed. See the repository README for the learning log and commands.
+
+The practical loop is: change a component, add a story for its state, inspect Controls and Actions, run the checks, review the diff, commit, and push.

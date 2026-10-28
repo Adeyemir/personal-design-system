@@ -1,9 +1,41 @@
 import type { Preview } from '@storybook/react-vite'
 import { MINIMAL_VIEWPORTS } from 'storybook/viewport'
+import { Theme } from './Theme'
 import '../src/index.css'
+import './preview.css'
 
 const preview: Preview = {
+  tags: ['autodocs'],
+  globalTypes: {
+    theme: {
+      description: 'Component color theme',
+      toolbar: {
+        icon: 'circlehollow',
+        dynamicTitle: true,
+        items: [
+          { value: 'light', title: 'Light' },
+          { value: 'dark', title: 'Dark' },
+        ],
+      },
+    },
+  },
+  initialGlobals: {
+    theme: 'light',
+  },
+  decorators: [
+    (Story, context) => (
+      <Theme theme={context.globals.theme === 'dark' ? 'dark' : 'light'}>
+        <Story />
+      </Theme>
+    ),
+  ],
   parameters: {
+    backgrounds: { disable: true },
+    options: {
+      storySort: {
+        order: ['Guides', 'Atoms', 'Molecules', 'Organisms'],
+      },
+    },
     viewport: {
       options: MINIMAL_VIEWPORTS,
     },
@@ -15,10 +47,7 @@ const preview: Preview = {
     },
 
     a11y: {
-      // 'todo' - show a11y violations in the test UI only
-      // 'error' - fail CI on a11y violations
-      // 'off' - skip a11y checks entirely
-      test: 'todo'
+      test: 'error'
     }
   },
 };

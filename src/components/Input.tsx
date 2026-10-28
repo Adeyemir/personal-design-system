@@ -35,7 +35,7 @@ export const Input = ({
         id={inputId}
         aria-describedby={descriptionIds}
         aria-invalid={error ? true : invalid}
-        className={`block w-full rounded-lg border bg-[var(--bg)] px-3 py-2 text-[var(--text-h)] placeholder:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-60 ${error ? 'border-[var(--danger)]' : 'border-[var(--border)]'} ${className}`}
+        className={`block w-full rounded-lg border bg-[var(--bg)] px-3 py-2 text-[var(--text-h)] placeholder:text-[var(--text)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)] disabled:cursor-not-allowed disabled:opacity-60 ${error ? 'border-[var(--danger)]' : 'border-[var(--input-border)]'} ${className}`}
       />
       {message && (
         <p id={messageId} className={error ? 'text-[var(--danger)]' : undefined}>

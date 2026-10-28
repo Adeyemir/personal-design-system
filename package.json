@@ -9,7 +9,10 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "test:storybook": "vitest run --project=storybook-light --project=storybook-dark",
+    "test:storybook:coverage": "npm run test:storybook -- --coverage",
+    "check": "npm run lint && npm run build && npm run test:storybook && npm run build-storybook"
   },
   "dependencies": {
     "react": "^19.3.1",

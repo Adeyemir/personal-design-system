@@ -4,6 +4,13 @@ import { Badge } from './Badge';
 const meta: Meta<typeof Badge> = {
   title: 'Atoms/Badge',
   component: Badge,
+  parameters: {
+    docs: {
+      description: {
+        component: 'A short, noninteractive status label. The text communicates the state so color is not the only cue.',
+      },
+    },
+  },
 };
 
 export default meta;

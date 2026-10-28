@@ -15,25 +15,29 @@ export default defineConfig({
     include: ['storybook/viewport'],
   },
   test: {
-    projects: [{
+    coverage: {
+      provider: 'v8',
+      include: ['src/components/**/*.{ts,tsx}'],
+      exclude: ['src/components/**/*.stories.tsx'],
+      reporter: ['text', 'html', 'json-summary'],
+    },
+    projects: ['light', 'dark'].map((theme) => ({
       extends: true,
       plugins: [
-      // The plugin will run tests for the stories defined in your Storybook config
-      // See options at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon#storybooktest
-      storybookTest({
-        configDir: path.join(dirname, '.storybook')
-      })],
+        storybookTest({
+          configDir: path.join(dirname, '.storybook'),
+          initialGlobals: { theme },
+        }),
+      ],
       test: {
-        name: 'storybook',
+        name: `storybook-${theme}`,
         browser: {
           enabled: true,
           headless: true,
           provider: playwright({}),
-          instances: [{
-            browser: 'chromium'
-          }]
-        }
-      }
-    }]
-  }
+          instances: [{ browser: 'chromium' }],
+        },
+      },
+    })),
+  },
 });

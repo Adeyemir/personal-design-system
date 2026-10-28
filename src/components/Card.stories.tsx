@@ -11,6 +11,11 @@ const meta = {
   tags: ['autodocs'],
   parameters: {
     layout: 'padded',
+    docs: {
+      description: {
+        component: 'A static content container with optional title, description, children, and footer. Use real buttons or links inside a card for actions.',
+      },
+    },
   },
   decorators: [
     (Story) => (

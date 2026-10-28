@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { fn } from 'storybook/test';
+import { expect, fn } from 'storybook/test';
 import { DashboardSection } from './DashboardSection';
 
 const meta = {
@@ -7,6 +7,11 @@ const meta = {
   component: DashboardSection,
   parameters: {
     layout: 'fullscreen',
+    docs: {
+      description: {
+        component: 'A stateless project overview. Pass project data and handle onCreateProject in the parent. Stories supply mock data and a callback spy; they do not create a backend.',
+      },
+    },
   },
   argTypes: {
     title: { control: 'text' },
@@ -27,11 +32,21 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-export const Default: Story = {};
+export const Default: Story = {
+  play: async ({ args, canvas, userEvent }) => {
+    await expect(canvas.getByRole('heading', { name: args.title, level: 2 })).toBeVisible();
+    await userEvent.click(canvas.getByRole('button', { name: 'Create project' }));
+    await expect(args.onCreateProject).toHaveBeenCalledTimes(1);
+  },
+};
 
 export const Empty: Story = {
   args: {
     projects: [],
+  },
+  play: async ({ canvas }) => {
+    await expect(canvas.getByText('No projects yet')).toBeVisible();
+    await expect(canvas.queryByRole('heading', { level: 3 })).not.toBeInTheDocument();
   },
 };
 
@@ -65,7 +80,15 @@ export const LongTitles: Story = {
 };
 
 export const Mobile: Story = {
+  args: LongTitles.args,
   globals: {
     viewport: { value: 'mobile1', isRotated: false },
+  },
+  play: async ({ canvas, canvasElement }) => {
+    const [firstTitle, secondTitle] = canvas.getAllByRole('heading', { level: 3 });
+    await expect(secondTitle.getBoundingClientRect().top).toBeGreaterThan(
+      firstTitle.getBoundingClientRect().bottom,
+    );
+    await expect(canvasElement.scrollWidth).toBeLessThanOrEqual(canvasElement.clientWidth);
   },
 };

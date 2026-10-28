@@ -11,13 +11,15 @@ npm ci
 npm run storybook
 ```
 
-Open http://localhost:6006. `npm run dev` starts the separate Vite starter app.
+Use Node.js 24. Open http://localhost:6006. `npm run dev` starts the separate Vite starter app.
 
 ## Checks
 
 ```bash
 npm run lint
 npm run build
+npm run test:storybook
+npm run test:storybook:coverage
 npm run build-storybook
 ```
 
@@ -38,8 +40,8 @@ Each completed stage is committed and pushed separately so the Git history expla
 | Foundations | Complete | Button and Badge variants; Card composition; a responsive DashboardSection; checking contrast in Storybook |
 | 1. Controls | Complete | The dashboard renders its `title` prop, and its story supplies `args.title`. Controls changes those args, which updates the rendered heading. ESLint ignores generated Storybook output. |
 | 2. Reusable data and states | Complete | The dashboard accepts typed project data and a create callback; five stories cover realistic states. Input demonstrates labels, descriptions, errors, disabled state, and filled state. |
-| 3. Documentation and verification | Next | Autodocs, interaction tests, accessibility checks, and repeatable GitHub checks |
-| 4. Sharing and recap | Planned | A shareable build, a guided review, and the final learning checklist |
+| 3. Documentation and verification | Complete | Autodocs, an MDX guide, interaction tests, light/dark checks, accessibility failures, coverage, and a GitHub Actions workflow |
+| 4. Sharing and recap | Next | A shareable build, a guided review, and the final learning checklist |
 
 ### Stage 1 exercise: Controls
 
@@ -60,6 +62,21 @@ The default value `title = 'My projects'` is used when the prop is omitted.
 - Inspect Input's stories. The label is linked with `htmlFor`/`id`; helper and error text are linked with `aria-describedby`; errors set `aria-invalid`.
 
 Input is an uncontrolled native input: `defaultValue` provides its initial value. A consumer can instead supply `value` and `onChange` to manage its state.
+
+### Stage 3 exercise: Documentation and tests
+
+Open **Guides → Tutorial** in Storybook for the complete walkthrough. Each component also has an Autodocs page.
+
+- `play` functions verify button callbacks, disabled behavior, clicking an input label, typing, linked error messages, the empty state, and a mobile layout without horizontal overflow.
+- The Light / Dark toolbar changes the component theme and its canvas together. Semantic text colors stay readable in both themes.
+- `npm run test:storybook` renders every workshop story in both light and dark themes, with accessibility violations treated as errors.
+- `npm run test:storybook:coverage` writes an HTML report to `coverage/index.html`.
+- `npm run check` runs lint, the application build, component tests, and the static Storybook build.
+- `.github/workflows/checks.yml` runs the same checks for pushes and pull requests. Successful runs provide downloadable `storybook-site` and `component-coverage` artifacts for seven days.
+
+Stage 3 verification: 23 stories pass in each theme, for 46 Chromium tests. This includes automated accessibility checks and eight interaction scenarios per theme. The first coverage run reports 100% line coverage and 97.95% branch coverage for the five components. Coverage is a record of execution, rather than a guarantee that every user scenario is covered.
+
+The Storybook sidebar focuses on the workshop components and guide. The original generated examples remain in the repository as source references.
 
 ### Design references
 
