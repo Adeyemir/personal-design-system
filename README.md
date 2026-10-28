@@ -110,21 +110,14 @@ The repository and downloadable build complete the sharing exercise. A public Pa
 
 The follow-up was verified through Storybook's own test service: all 23 stories pass with accessibility enabled. The same configuration passes with coverage in sidebar mode, and all 46 CLI theme checks still pass.
 
-## Final hands-on review
+## What this project covers
 
-The component and verification work is implemented. Use these exercises to confirm you can explain and operate it yourself:
-
-- [ ] Change the dashboard title in Controls and find the matching `args` and prop in code.
-- [ ] Change the project array and explain `.map()`, stable keys, and the empty state.
-- [ ] Click Create project and find its recorded event in Actions.
-- [ ] Click Input's label, type text, inspect an error, and navigate controls with Tab.
-- [ ] Check Mobile and Long Titles in both Light and Dark themes.
-- [ ] Open the component Docs pages and **Guides → Tutorial**.
-- [ ] Run tests from the Storybook sidebar with Accessibility and Coverage enabled.
-- [ ] Review the checks and downloadable build on GitHub.
-- [ ] Review a stage commit and explain why its changes belong together.
-
-You have completed the tutorial workflow when you can build a component, describe its states in stories, inspect its props and events, verify it, document it, and share a reviewable change. The next exercise is to create a small feature branch and repeat that loop independently.
+- Reusable React components with typed props, variants, children, and composition.
+- Data-driven rendering, callbacks, empty states, and responsive layouts.
+- Storybook stories, Controls, Actions, Autodocs, and an MDX tutorial guide.
+- Accessible labels, validation messages, keyboard focus, and light/dark themes.
+- Interaction tests, accessibility checks, coverage reports, and GitHub Actions.
+- Small, documented implementation stages committed and pushed to GitHub.
 
 The Storybook sidebar focuses on the workshop components and guide. The original generated examples remain in the repository as source references.
 
