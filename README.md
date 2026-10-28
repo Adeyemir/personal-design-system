@@ -1,75 +1,65 @@
-# React + TypeScript + Vite
+# Personal Design System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A React, TypeScript, Tailwind CSS, and Storybook learning project. The goal is to practise building, documenting, checking, and sharing reusable components before working in an existing frontend team's codebase.
 
-Currently, two official plugins are available:
+This project's theme is a practice theme. Existing product work should reuse that product's brand assets, design tokens, components, and conventions.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Run locally
 
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm ci
+npm run storybook
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+Open http://localhost:6006. `npm run dev` starts the separate Vite starter app.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Checks
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
+```bash
+npm run lint
+npm run build
+npm run build-storybook
 ```
+
+## Component map
+
+| Level | Components | Lesson |
+| --- | --- | --- |
+| Atoms | Button, Badge | Props, variants, and shared styling |
+| Molecules | Card | Children, optional slots, and composition |
+| Organisms | DashboardSection | Combining components and responsive grids |
+
+## Learning log
+
+Each completed stage is committed and pushed separately so the Git history explains the progression.
+
+| Stage | Status | Implemented and learned |
+| --- | --- | --- |
+| Foundations | Complete | Button and Badge variants; Card composition; a responsive DashboardSection; checking contrast in Storybook |
+| 1. Controls | Complete | The dashboard renders its `title` prop, and its story supplies `args.title`. Controls changes those args, which updates the rendered heading. ESLint ignores generated Storybook output. |
+| 2. Reusable data and states | Next | Typed data, callbacks, a labelled form input, and stories for realistic edge cases |
+| 3. Documentation and verification | Planned | Autodocs, interaction tests, accessibility checks, and repeatable GitHub checks |
+| 4. Sharing and recap | Planned | A shareable build, a guided review, and the final learning checklist |
+
+### Stage 1 exercise: Controls
+
+Open **Organisms → DashboardSection → Default**, select **Controls**, and change `title`. Follow the value through these three places:
+
+1. `args.title` in `DashboardSection.stories.tsx` supplies a sample value.
+2. `DashboardSectionProps` defines the component's input.
+3. `<h2>{title}</h2>` displays that input.
+
+The default value `title = 'My projects'` is used when the prop is omitted.
+
+## About Storybook's completion percentage
+
+The sidebar percentage measures Storybook's onboarding checklist. Some items are triggered by actions in the running UI, such as changing Controls, using Viewports, or running tests from the sidebar. Other items involve optional AI or hosted services. It is separate from this repository's learning checklist, and CLI tests or Git pushes do not automatically complete every UI item.
+
+Keep the checklist honest: perform applicable actions in Storybook, and use its own skip controls for optional steps you choose to omit.
+
+## References
+
+- [Storybook documentation](https://storybook.js.org/docs)
+- [Stories and args](https://storybook.js.org/docs/writing-stories/args)
+- [Interaction tests](https://storybook.js.org/docs/writing-tests/interaction-testing)
+- [Accessibility tests](https://storybook.js.org/docs/writing-tests/accessibility-testing)

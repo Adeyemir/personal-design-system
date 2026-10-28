@@ -2,10 +2,16 @@ import { Button } from './Button';
 import { Badge } from './Badge';
 import { Card } from './Card';
 
-export const DashboardSection = () => {
+type DashboardSectionProps = {
+  title?: string;
+};
+
+export const DashboardSection = ({
+  title = 'My projects',
+}: DashboardSectionProps) => {
   return (
     <section className="space-y-4 bg-[var(--bg)] p-6 text-left text-[var(--text)]">
-      <h2>My projects</h2>
+      <h2>{title}</h2>
 
       <Button label="Create project" />
 
