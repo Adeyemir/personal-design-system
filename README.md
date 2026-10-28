@@ -6,6 +6,12 @@ A React, TypeScript, Tailwind CSS, and Storybook learning project. The goal is t
 
 This project's theme is a practice theme. Existing product work should reuse that product's brand assets, design tokens, components, and conventions.
 
+## Completed Storybook workshop
+
+[<img src="docs/images/storybook-completed.png" alt="Completed Storybook guide showing Your work here is done, passing component tests, coverage, and accessibility checks. Optional integrations are marked as skipped." width="1600" />](docs/images/storybook-completed.png)
+
+The finished local guide and passing component checks. Click the screenshot to open the full-resolution image.
+
 ## Run locally
 
 ```bash
