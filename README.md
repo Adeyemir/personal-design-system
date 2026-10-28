@@ -75,6 +75,7 @@ Open **Guides → Tutorial** in Storybook for the complete walkthrough. Each com
 - `npm run test:storybook:coverage` writes an HTML report to `coverage/index.html`.
 - `npm run check` runs lint, the application build, component tests, and the static Storybook build.
 - `.github/workflows/checks.yml` runs the same checks for pushes and pull requests. Successful runs provide downloadable `storybook-site` and `component-coverage` artifacts for seven days.
+- The local sidebar runner uses one light-theme project because the addon assigns a single project name per Storybook configuration. CLI and CI still run both themes. This avoids duplicate project names when clicking Run tests with Coverage and Accessibility enabled.
 
 Stage 3 verification: 23 stories pass in each theme, for 46 Chromium tests. This includes automated accessibility checks and eight interaction scenarios per theme. The first coverage run reports 100% line coverage and 97.95% branch coverage for the five components. Coverage is a record of execution, rather than a guarantee that every user scenario is covered.
 
@@ -99,6 +100,9 @@ The repository and downloadable build complete the sharing exercise. A public Pa
 - [Stage 2: Data-driven states and Input](https://github.com/Adeyemir/personal-design-system/commit/60d8902)
 - [Stage 3: Documentation and automated checks](https://github.com/Adeyemir/personal-design-system/commit/dbef9ca)
 - Stage 4: `docs: wrap up Storybook tutorial and sharing workflow` in the repository history.
+- Follow-up: keep the sidebar test runner compatible with the two-theme CLI configuration, and normalize heading assertions when Controls values contain whitespace.
+
+The follow-up was verified through Storybook's own test service: all 23 stories pass with accessibility enabled. The same configuration passes with coverage in sidebar mode, and all 46 CLI theme checks still pass.
 
 ## Final hands-on review
 

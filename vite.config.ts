@@ -7,6 +7,9 @@ import path from 'node:path';
 import { storybookTest } from '@storybook/addon-vitest/vitest-plugin';
 import { playwright } from '@vitest/browser-playwright';
 const dirname = import.meta.dirname;
+// The sidebar addon assigns one project name per Storybook config directory.
+// Keep one project there; CLI and CI can run separate light/dark projects.
+const themes = process.env.VITEST_STORYBOOK === 'true' ? ['light'] : ['light', 'dark'];
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
@@ -21,7 +24,7 @@ export default defineConfig({
       exclude: ['src/components/**/*.stories.tsx'],
       reporter: ['text', 'html', 'json-summary'],
     },
-    projects: ['light', 'dark'].map((theme) => ({
+    projects: themes.map((theme) => ({
       extends: true,
       plugins: [
         storybookTest({

@@ -34,7 +34,9 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   play: async ({ args, canvas, userEvent }) => {
-    await expect(canvas.getByRole('heading', { name: args.title, level: 2 })).toBeVisible();
+    const heading = canvas.getByRole('heading', { level: 2 });
+    await expect(heading).toHaveTextContent((args.title ?? 'My projects').replace(/\s+/g, ' ').trim());
+    await expect(heading).toBeVisible();
     await userEvent.click(canvas.getByRole('button', { name: 'Create project' }));
     await expect(args.onCreateProject).toHaveBeenCalledTimes(1);
   },
