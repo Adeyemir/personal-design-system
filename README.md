@@ -122,12 +122,6 @@ The Storybook sidebar focuses on the workshop components and guide. The original
 
 The existing practice theme remains the main target. [shadcn/ui](https://ui.shadcn.com/) informs compact content hierarchy and restrained surfaces; the [imgs.so sign-in reference](https://imgs.so/) contributes only a flat, rounded input treatment. Existing font and color roles remain in place. The form craft reference requires visible labels, native inputs, associated messages, and visible keyboard focus. The danger color is reserved for validation messages and error borders.
 
-## About Storybook's completion percentage
-
-The sidebar percentage measures Storybook's onboarding checklist. Some items are triggered by actions in the running UI, such as changing Controls, using Viewports, or running tests from the sidebar. Other items involve optional AI or hosted services. It is separate from this repository's learning checklist, and CLI tests or Git pushes do not automatically complete every UI item.
-
-Keep the checklist honest: perform applicable actions in Storybook, and use its own skip controls for optional steps you choose to omit.
-
 ## References
 
 - [Storybook documentation](https://storybook.js.org/docs)
